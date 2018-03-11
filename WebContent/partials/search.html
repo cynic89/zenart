@@ -1,0 +1,42 @@
+<div class="error text-center" ng-show="errorMsg && errorMsg!=''">
+	<span>{{errorMsg}}</span>
+</div>
+<div class="srch-rslt-container">
+	<div class="container">
+		<div class="col-xs-4 col-md-3" ng-repeat="artist in artists.items">
+			<div class="artist-container">
+				<div class="art-img-wrap">
+					<a ui-sref="artists.artist({id: artist.id})"> <img
+						ng-src="{{artist.images[0].url ? artist.images[0].url: 'img/artist_default.png'}}"
+						class="artist-img" alt="No Image Available">
+					</a>
+				</div>
+				<div class="art-name-wrap">
+					<a ui-sref="artists.artist({id: artist.id})"> <span>{{artist.name}}</span>
+					</a>
+				</div>
+				<div class="art-stat-wrap">
+					<span class="pull-left" title="{{'Artist Popularity is '+artist.popularity}}"> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>0) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>20) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>40) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>60) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>80) ?'#BBD41C':''}}"></span>
+					</span> 
+					<span class="pull-right"> 
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span>{{artist.followers.total
+							| numSuffix}}</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row text-center srch-footer">
+
+		<span ng-show="lastPage"><b>You have reached the last page</b></span>
+
+		<button class="btn btn-success more-btn sharp-edge" ng-show="!lastPage && artists.items.length>0" ng-click="more()">
+		Load More Artists</button>
+
+</div>
+</div>

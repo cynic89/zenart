@@ -1,0 +1,31 @@
+<div class="header-wrap" ng-controller="headerController">
+	<header class="container main-header">
+
+		<div class="col-xs-3">
+			<div class="logo">
+				<a ui-sref="home"> <span>ZENART</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="col-xs-1"></div>
+
+		<div class="main-nav col-xs-4">
+			<form name="searchForm">
+				<div class="input-group">
+					<input type="text" class="form-control sharp-edge"
+						placeholder="Search Artist" ng-model="searchText"
+						ng-required="true"> 
+						<span class="input-group-btn ">
+						<button class="btn btn-primary sharp-edge" type="submit"
+							ng-click="search(searchText)" ng-disabled="searchForm.$invalid">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+					</span>
+				</div>
+			</form>
+		</div>
+
+	</header>
+
+</div>

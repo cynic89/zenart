@@ -1,0 +1,118 @@
+<div class="artist-wall-wrap">
+	<div class="container">
+		<div class="row artist-avatart-wrap">
+			<div class="col-xs-4 col-md-3 artist-wall-main">
+				<img
+					ng-src="{{artist.images[0].url ? artist.images[0].url: 'img/artist_default.png'}}"
+					class="artist-avatar" alt="No Image Available">
+			</div>
+			<div class="col-xs-8 col-md-9 art-det-txt">
+				<div><h2>{{artist.name}}</h2></div>
+				<div><span ng-repeat = "genre in artist.genres">{{genre+ ($index==artist.genres.length-1?"":", ")}}</span></div>
+				<div title="{{'Artist Popularity is '+artist.popularity}}">
+					<span class="pull-left"> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>0) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>20) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>40) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>60) ?'#BBD41C':''}}"></span> 
+						<span class="glyphicon glyphicon-star" style="color: {{(artist.popularity>80) ?'#BBD41C':''}}"></span>
+					</span>
+				</div><br>
+				<div>
+					<span> 
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span>{{artist.followers.total
+							| numSuffix}}</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="artist-top-wrap">
+
+	<div class="artist-top-head">
+		<h3>Top Tracks{{" ("+(topTracks ? topTracks.length:0)+")"}}</h3>
+	</div>
+
+	<div class="slide-wrap">
+		<div class="slide-body">
+			<ul class="za-slide-lst" style="left: {{slide['trk'].left+'px'}}">
+				<li ng-repeat="track in topTracks" class="za-slide-itm">
+					<div>
+						<div>
+							<img
+								ng-src="{{track.album.images[0].url ? track.album.images[0].url: 'img/artist_default.png'}}"
+								class="za-slide-thumb" alt="No Image Available">
+
+						</div>
+						<div class="slide-footer">
+							<span class="nm">{{track.name}}</span>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="slide-btn-nxt" ng-show="isThereMoreSlide('trk',topTracks)">
+		<button class="btn btn-sm" ng-click="slideNext('trk')">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		</button>
+
+	</div>
+	
+	<div class="slide-btn-prev" ng-show="slide['trk'].left<0">
+		<button class="btn btn-sm" ng-click="slidePrevious('trk')">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		</button>
+
+	</div>
+
+
+</div>
+
+<div class="artist-top-wrap">
+
+	<div class="artist-top-head">
+		<h3>Albums{{" ("+(albums ? albums.length:0)+")"}}</h3>
+	</div>
+
+	<div class="slide-wrap">
+		<div class="slide-body">
+			<ul class="za-slide-lst" style="left: {{slide['alb'].left+'px'}}">
+				<li ng-repeat="album in albums" class="za-slide-itm">
+					<div>
+						<div>
+							<img
+								ng-src="{{album.images[0].url ? album.images[0].url: 'img/artist_default.png'}}"
+								class="za-slide-thumb" alt="No Image Available">
+
+						</div>
+						<div class="slide-footer">
+							<span class="nm">{{album.name}}</span>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="slide-btn-nxt" ng-show="isThereMoreSlide('alb',albums)">
+		<button class="btn btn-sm" ng-click="slideNext('alb')">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		</button>
+
+	</div>
+	
+	<div class="slide-btn-prev" ng-show="slide['alb'].left<0">
+		<button class="btn btn-sm" ng-click="slidePrevious('alb')">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		</button>
+
+	</div>
+
+
+</div>

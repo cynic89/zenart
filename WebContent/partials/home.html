@@ -1,0 +1,27 @@
+<div class="home-page">
+	<img class="bg-img" src="img/music_3.jpg">
+	<div class="search-container">
+
+		<div class="text-center search-head-txt">
+			<span>Search from over a Million Artists</span>
+		</div>
+
+		<div class="search-wrap">
+			<form class="form-horizontal" name="searchForm">
+				<div class="input-group input-group-lg">
+					<input type="text" class="form-control sharp-edge"
+						name="serachText" placeholder="Search Artist"
+						ng-model="searchText" ng-required="true"> <span
+						class="input-group-btn">
+						<button class="btn btn-primary sharp-edge" type="submit"
+							ng-click="search(searchText)" ng-disabled="searchForm.$invalid">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<!-- <span>Search</span> -->
+						</button>
+					</span>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
